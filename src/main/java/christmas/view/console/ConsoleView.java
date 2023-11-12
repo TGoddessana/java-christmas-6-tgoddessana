@@ -1,13 +1,14 @@
-package christmas.view;
+package christmas.view.console;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public abstract class ConsoleView {
+public class ConsoleView {
     protected String input() {
         return Console.readLine();
     }
 
-    protected void display(String message) {
+    protected String display(String message) {
         System.out.println(message);
+        return message;
     }
 }
