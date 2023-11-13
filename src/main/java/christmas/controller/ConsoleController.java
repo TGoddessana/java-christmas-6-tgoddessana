@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.VisitDate;
 import christmas.view.ErrorView;
 import christmas.view.VisitDateView;
 import christmas.view.WelcomeView;
@@ -22,12 +23,12 @@ public class ConsoleController {
     }
 
 
-    private void getVisitDate() {
+    private VisitDate getVisitDate() {
         try {
-            visitDateView.inputVisitDate();
+            return new VisitDate(visitDateView.inputVisitDate());
         } catch (IllegalArgumentException e) {
             errorView.displayErrorMessage(e.getMessage());
-            getVisitDate();
+            return getVisitDate();
         }
     }
 }
