@@ -2,7 +2,7 @@ package christmas.view.console;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class ConsoleView {
+public abstract class ConsoleView {
     protected String input() {
         return Console.readLine();
     }
