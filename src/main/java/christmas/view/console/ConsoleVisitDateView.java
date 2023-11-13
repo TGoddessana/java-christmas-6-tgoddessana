@@ -8,14 +8,20 @@ public class ConsoleVisitDateView extends ConsoleView implements VisitDateView {
 
     @Override
     public Integer inputVisitDate() {
-        return validateInput(input(ASK_VISIT_DATE_MESSAGE));
+        String userInput = input(ASK_VISIT_DATE_MESSAGE);
+        return getCleanInput(userInput);
     }
 
-    private Integer validateInput(String input) {
+    private Integer getCleanInput(String input) {
         try {
-            return Integer.parseInt(input);
+            return parseInput(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
     }
+
+    private Integer parseInput(String input) {
+        return Integer.parseInt(input);
+    }
+
 }
