@@ -7,6 +7,11 @@ public class ConsoleView {
         return Console.readLine();
     }
 
+    protected String input(String message) {
+        display(message);
+        return input();
+    }
+
     protected String display(String message) {
         System.out.println(message);
         return message;
