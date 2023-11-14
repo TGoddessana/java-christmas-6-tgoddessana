@@ -13,8 +13,7 @@ import christmas.view.console.ConsoleErrorView;
 import christmas.view.console.ConsoleOrderView;
 import christmas.view.console.ConsoleVisitDateView;
 import christmas.view.console.ConsoleWelcomeView;
-import java.util.HashMap;
-import java.util.List;
+import java.util.function.Supplier;
 
 public class ConsoleController {
     private static final WelcomeView welcomeView = new ConsoleWelcomeView();
@@ -30,49 +29,36 @@ public class ConsoleController {
         MenuBoard menuBoard = menuService.setUpMenuBoard();
 
         // 손님에게 환영 메시지를 보여줍니다.
-        welcome();
+        welcomeView.displayWelcomeMessage();
 
         // 손님에게 방문할 날짜를 입력받습니다.
         VisitDate visitDate = getVisitDate();
 
         // 손님에게 주문을 입력받습니다.
-        List<HashMap<String, Integer>> order = getOrder();
-        OrderBoard orderBoard = createOrderBoard(order);
+        OrderBoard orderBoard = getOrderBoard();
 
         // 손님이 주문한 메뉴를 출력합니다.
         orderView.displayPreviewMessage();
-        orderView.displayOrdered(order);
+        orderView.displayOrdered(orderBoard);
     }
 
-    private void welcome() {
-        welcomeView.displayWelcomeMessage();
+    private <T> T getInput(Supplier<T> supplier) {
+        try {
+            return supplier.get();
+        } catch (IllegalArgumentException e) {
+            errorView.displayErrorMessage(e.getMessage());
+            return getInput(supplier);
+        }
     }
 
 
     private VisitDate getVisitDate() {
-        try {
-            return new VisitDate(visitDateView.inputVisitDate());
-        } catch (IllegalArgumentException e) {
-            errorView.displayErrorMessage(e.getMessage());
-            return getVisitDate();
-        }
+        return getInput(() -> new VisitDate(visitDateView.inputVisitDate()));
     }
 
-    private List<HashMap<String, Integer>> getOrder() {
-        try {
-            return orderView.inputOrder();
-        } catch (IllegalArgumentException e) {
-            errorView.displayErrorMessage(e.getMessage());
-            return getOrder();
-        }
+    private OrderBoard getOrderBoard() {
+        return getInput(() -> orderService.createOrderBoard(orderView.inputOrder()));
     }
 
-    private OrderBoard createOrderBoard(List<HashMap<String, Integer>> order) {
-        try {
-            return orderService.createOrderBoard(order);
-        } catch (IllegalArgumentException e) {
-            errorView.displayErrorMessage("");
-            return createOrderBoard(order);
-        }
-    }
+
 }

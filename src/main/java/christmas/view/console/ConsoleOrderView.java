@@ -1,5 +1,6 @@
 package christmas.view.console;
 
+import christmas.domain.OrderBoard;
 import christmas.view.OrderView;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,17 +18,16 @@ public class ConsoleOrderView extends ConsoleView implements OrderView {
     }
 
     @Override
-    public List<HashMap<String, Integer>> displayOrdered(List<HashMap<String, Integer>> order) {
+    public OrderBoard displayOrdered(OrderBoard orderBoard) {
         display("");
         display("<주문 내역>");
 
-        for (HashMap<String, Integer> orderedMenu : order) {
-            for (String menuName : orderedMenu.keySet()) {
-                System.out.println(menuName + " " + orderedMenu.get(menuName) + "개");
-            }
+        for (int i = 0; i < orderBoard.getOrderItems().size(); i++) {
+            display(orderBoard.getOrderItems().get(i).getItemName() + " " + orderBoard.getOrderItems().get(i)
+                    .getQuantity() + "개");
         }
 
-        return order;
+        return orderBoard;
     }
 
     @Override
