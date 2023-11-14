@@ -7,4 +7,8 @@ public interface OrderView {
     List<HashMap<String, Integer>> inputOrder();
 
     List<HashMap<String, Integer>> displayOrdered(List<HashMap<String, Integer>> order);
+
+    String displayPreviewMessage();
+
+
 }

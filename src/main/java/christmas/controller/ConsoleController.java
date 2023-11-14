@@ -40,6 +40,7 @@ public class ConsoleController {
         OrderBoard orderBoard = createOrderBoard(order);
 
         // 손님이 주문한 메뉴를 출력합니다.
+        orderView.displayPreviewMessage();
         orderView.displayOrdered(order);
     }
 
