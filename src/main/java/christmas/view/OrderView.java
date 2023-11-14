@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.domain.OrderBoard;
+import christmas.domain.order.OrderBoard;
 import java.util.HashMap;
 import java.util.List;
 

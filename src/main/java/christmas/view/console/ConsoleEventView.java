@@ -1,7 +1,7 @@
 package christmas.view.console;
 
-import christmas.domain.MenuBoard;
-import christmas.domain.OrderBoard;
+import christmas.domain.menu.MenuBoard;
+import christmas.domain.order.OrderBoard;
 import christmas.view.EventView;
 
 public class ConsoleEventView extends ConsoleView implements EventView {

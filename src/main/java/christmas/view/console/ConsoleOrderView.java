@@ -1,6 +1,6 @@
 package christmas.view.console;
 
-import christmas.domain.OrderBoard;
+import christmas.domain.order.OrderBoard;
 import christmas.view.OrderView;
 import java.util.ArrayList;
 import java.util.HashMap;

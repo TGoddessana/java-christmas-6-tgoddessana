@@ -1,8 +1,8 @@
 package christmas.service;
 
-import christmas.domain.MenuBoard;
-import christmas.domain.MenuCategory;
-import christmas.domain.MenuItem;
+import christmas.domain.menu.MenuBoard;
+import christmas.domain.menu.MenuCategory;
+import christmas.domain.menu.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 

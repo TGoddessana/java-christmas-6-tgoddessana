@@ -1,8 +1,8 @@
 package christmas.controller.console;
 
-import christmas.domain.MenuBoard;
-import christmas.domain.OrderBoard;
-import christmas.domain.VisitDate;
+import christmas.domain.menu.MenuBoard;
+import christmas.domain.order.OrderBoard;
+import christmas.domain.order.VisitDate;
 import christmas.service.MenuService;
 import christmas.service.OrderService;
 import christmas.view.ErrorView;

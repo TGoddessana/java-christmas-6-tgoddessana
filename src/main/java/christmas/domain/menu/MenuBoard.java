@@ -1,5 +1,7 @@
-package christmas.domain;
+package christmas.domain.menu;
 
+import christmas.domain.order.OrderBoard;
+import christmas.domain.order.OrderItem;
 import java.util.List;
 import java.util.StringJoiner;
 

@@ -1,8 +1,8 @@
 package christmas.service;
 
-import christmas.domain.OrderBoard;
-import christmas.domain.OrderItem;
-import christmas.domain.VisitDate;
+import christmas.domain.order.OrderBoard;
+import christmas.domain.order.OrderItem;
+import christmas.domain.order.VisitDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

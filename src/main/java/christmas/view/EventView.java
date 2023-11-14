@@ -1,7 +1,7 @@
 package christmas.view;
 
-import christmas.domain.MenuBoard;
-import christmas.domain.OrderBoard;
+import christmas.domain.menu.MenuBoard;
+import christmas.domain.order.OrderBoard;
 
 public interface EventView {
     String displayPreviewMessage();
