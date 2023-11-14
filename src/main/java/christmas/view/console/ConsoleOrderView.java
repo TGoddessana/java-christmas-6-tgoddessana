@@ -17,6 +17,7 @@ public class ConsoleOrderView extends ConsoleView implements OrderView {
 
     @Override
     public List<HashMap<String, Integer>> displayOrdered(List<HashMap<String, Integer>> order) {
+        display("");
         display("<주문 내역>");
 
         for (HashMap<String, Integer> orderedMenu : order) {
