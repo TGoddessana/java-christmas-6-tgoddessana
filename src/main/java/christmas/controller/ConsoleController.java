@@ -1,8 +1,10 @@
 package christmas.controller;
 
 import christmas.domain.MenuBoard;
+import christmas.domain.OrderBoard;
 import christmas.domain.VisitDate;
 import christmas.service.MenuService;
+import christmas.service.OrderService;
 import christmas.view.ErrorView;
 import christmas.view.OrderView;
 import christmas.view.VisitDateView;
@@ -21,6 +23,7 @@ public class ConsoleController {
     private static final ErrorView errorView = new ConsoleErrorView();
 
     private static final MenuService menuService = new MenuService();
+    private static final OrderService orderService = new OrderService();
 
     public void run() {
         // 식당 오픈 전, 메뉴판을 미리 만들어둡니다.
@@ -33,10 +36,10 @@ public class ConsoleController {
         VisitDate visitDate = getVisitDate();
 
         // 손님에게 주문을 입력받습니다.
-        getOrder();
+        List<HashMap<String, Integer>> order = getOrder();
 
         // 손님에게 주문 내역을 보여줍니다.
-
+        OrderBoard orderBoard = createOrderBoard(order);
     }
 
     private void welcome() {
@@ -56,10 +59,18 @@ public class ConsoleController {
     private List<HashMap<String, Integer>> getOrder() {
         try {
             return orderView.inputOrder();
-
         } catch (IllegalArgumentException e) {
             errorView.displayErrorMessage(e.getMessage());
             return getOrder();
+        }
+    }
+
+    private OrderBoard createOrderBoard(List<HashMap<String, Integer>> order) {
+        try {
+            return orderService.createOrderBoard(order);
+        } catch (IllegalArgumentException e) {
+            errorView.displayErrorMessage("");
+            return createOrderBoard(order);
         }
     }
 }
