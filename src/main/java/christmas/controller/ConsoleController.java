@@ -43,6 +43,9 @@ public class ConsoleController {
         // 손님이 주문한 메뉴를 출력합니다.
         eventView.displayPreviewMessage();
         orderView.displayOrdered(orderBoard);
+
+        // 할인 전 가격을 출력합니다.
+        eventView.displayPriceBeforeEvent(orderBoard, menuBoard);
     }
 
     private <T> T getInput(Supplier<T> supplier) {
