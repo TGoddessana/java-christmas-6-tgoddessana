@@ -23,7 +23,7 @@ public class ConsoleOrderView extends ConsoleView implements OrderView {
     private List<HashMap<String, Integer>> getCleanInput(String input) {
         try {
             return parseInput(input);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
             throw new IllegalArgumentException(INVALID_INPUT_MESSAGE);
         }
     }
