@@ -10,6 +10,10 @@ public class OrderBoard {
         this.orderItems = orderItems;
     }
 
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
     private void validate(List<OrderItem> orderItems) {
         int sum = orderItems.stream().mapToInt(OrderItem::getQuantity).sum();
 

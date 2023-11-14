@@ -10,10 +10,27 @@ public class MenuBoard {
         this.menuCategories = menuCategories;
     }
 
-    public List<MenuCategory> getMenuCategories() {
-        return menuCategories;
+    public int calculateTotalPrice(OrderBoard orderBoard) {
+        int totalPrice = 0;
+
+        for (OrderItem orderItem : orderBoard.getOrderItems()) {
+            totalPrice += orderItem.getPrice(findMenuItem(orderItem));
+        }
+
+        return totalPrice;
     }
-    
+
+    private MenuItem findMenuItem(OrderItem orderItem) {
+        List<MenuItem> allMenuItems = menuCategories.stream()
+                .flatMap(category -> category.getMenuItems().stream())
+                .toList();
+
+        return allMenuItems.stream()
+                .filter(menuItem -> menuItem.getName().equals(orderItem.getItemName()))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 메뉴입니다."));
+    }
+
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("\n");

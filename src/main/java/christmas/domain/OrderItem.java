@@ -18,6 +18,10 @@ public class OrderItem {
         return quantity;
     }
 
+    public int getPrice(MenuItem menuItem) {
+        return menuItem.getPrice() * quantity;
+    }
+
     private void validateQuantity(int quantity) {
         if (quantity < 1 || quantity > 19) {
             throw new IllegalArgumentException("유효하지 않은 수량입니다.");
