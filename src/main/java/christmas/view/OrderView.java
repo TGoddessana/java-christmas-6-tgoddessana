@@ -8,8 +8,4 @@ public interface OrderView {
     List<HashMap<String, Integer>> inputOrder();
 
     OrderBoard displayOrdered(OrderBoard orderBoard);
-
-    String displayPreviewMessage();
-
-
 }

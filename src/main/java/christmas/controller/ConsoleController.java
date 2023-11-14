@@ -6,10 +6,12 @@ import christmas.domain.VisitDate;
 import christmas.service.MenuService;
 import christmas.service.OrderService;
 import christmas.view.ErrorView;
+import christmas.view.EventView;
 import christmas.view.OrderView;
 import christmas.view.VisitDateView;
 import christmas.view.WelcomeView;
 import christmas.view.console.ConsoleErrorView;
+import christmas.view.console.ConsoleEventView;
 import christmas.view.console.ConsoleOrderView;
 import christmas.view.console.ConsoleVisitDateView;
 import christmas.view.console.ConsoleWelcomeView;
@@ -19,6 +21,7 @@ public class ConsoleController {
     private static final WelcomeView welcomeView = new ConsoleWelcomeView();
     private static final VisitDateView visitDateView = new ConsoleVisitDateView();
     private static final OrderView orderView = new ConsoleOrderView();
+    private static final EventView eventView = new ConsoleEventView();
     private static final ErrorView errorView = new ConsoleErrorView();
 
     private static final MenuService menuService = new MenuService();
@@ -38,7 +41,7 @@ public class ConsoleController {
         OrderBoard orderBoard = getOrderBoard();
 
         // 손님이 주문한 메뉴를 출력합니다.
-        orderView.displayPreviewMessage();
+        eventView.displayPreviewMessage();
         orderView.displayOrdered(orderBoard);
     }
 
