@@ -53,7 +53,7 @@ public class ConsoleController {
 
 
     private VisitDate getVisitDate() {
-        return getInput(() -> new VisitDate(visitDateView.inputVisitDate()));
+        return getInput(() -> orderService.createVisitDate(visitDateView.inputVisitDate()));
     }
 
     private OrderBoard getOrderBoard() {
