@@ -33,6 +33,17 @@ public class MenuBoard {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 메뉴입니다."));
     }
 
+    public MenuItem findMenuItem(String itemName) {
+        List<MenuItem> allMenuItems = menuCategories.stream()
+                .flatMap(category -> category.getMenuItems().stream())
+                .toList();
+
+        return allMenuItems.stream()
+                .filter(menuItem -> menuItem.getName().equals(itemName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 메뉴입니다."));
+    }
+
     @Override
     public String toString() {
         StringJoiner sj = new StringJoiner("\n");

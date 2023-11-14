@@ -1,5 +1,6 @@
 package christmas.view.console;
 
+import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
 import christmas.view.EventView;
@@ -22,5 +23,14 @@ public class ConsoleEventView extends ConsoleView implements EventView {
         display(String.format("%,d원", priceBeforeEvent));
 
         return priceBeforeEvent;
+    }
+
+    @Override
+    public GiveawayEvent displayGiveawayEvent(GiveawayEvent giveawayEvent) {
+        display("");
+        display("<증정 메뉴>");
+        display(giveawayEvent.getEventItemName());
+
+        return giveawayEvent;
     }
 }

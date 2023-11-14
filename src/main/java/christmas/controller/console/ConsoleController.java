@@ -1,8 +1,10 @@
 package christmas.controller.console;
 
+import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
 import christmas.domain.order.VisitDate;
+import christmas.service.EventService;
 import christmas.service.MenuService;
 import christmas.service.OrderService;
 import christmas.view.ErrorView;
@@ -26,6 +28,7 @@ public class ConsoleController {
 
     private static final MenuService menuService = new MenuService();
     private static final OrderService orderService = new OrderService();
+    private static final EventService eventService = new EventService();
 
     public void run() {
         // 식당 오픈 전, 메뉴판을 미리 만들어둡니다.
@@ -46,6 +49,11 @@ public class ConsoleController {
 
         // 할인 전 가격을 출력합니다.
         eventView.displayPriceBeforeEvent(orderBoard, menuBoard);
+
+        // 증정 이벤트 객체를 만들고, 결과를 계산합니다.
+        GiveawayEvent giveawayEvent = eventService.initGiveawayEvent(menuBoard, orderBoard);
+        eventView.displayGiveawayEvent(giveawayEvent);
+
     }
 
     private <T> T getInput(Supplier<T> supplier) {
