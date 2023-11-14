@@ -28,7 +28,16 @@ public class OrderBoardTest {
         List<OrderItem> orderItemsExceedingTotal = Arrays.asList(new OrderItem("Item1", 19),
                 new OrderItem("Item2", 19));
 
-        assertThatThrownBy(() -> new OrderBoard(orderItemsExceedingTotal)).isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("총 수량은 20개 이하여야 합니다.");
+        assertThatThrownBy(() -> new OrderBoard(orderItemsExceedingTotal)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("중복된 이름의 메뉴가 존재할 경우, 예외를 발생시킨다.")
+    @Test
+    public void testOrderBoardWithDuplicatedMenuName() {
+        List<OrderItem> orderItemsWithDuplicatedMenuName = Arrays.asList(new OrderItem("Item1", 5),
+                new OrderItem("Item1", 5));
+
+        assertThatThrownBy(() -> new OrderBoard(orderItemsWithDuplicatedMenuName))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

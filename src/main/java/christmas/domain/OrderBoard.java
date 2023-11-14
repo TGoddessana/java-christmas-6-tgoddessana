@@ -16,6 +16,10 @@ public class OrderBoard {
         if (sum > 20) {
             throw new IllegalArgumentException("총 수량은 20개 이하여야 합니다.");
         }
+
+        if (orderItems.stream().map(OrderItem::getItemName).distinct().count() != orderItems.size()) {
+            throw new IllegalArgumentException("중복된 메뉴가 존재합니다.");
+        }
     }
 
 
