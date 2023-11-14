@@ -1,4 +1,4 @@
-package christmas.controller;
+package christmas.controller.console;
 
 import christmas.domain.MenuBoard;
 import christmas.domain.OrderBoard;

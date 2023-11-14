@@ -1,6 +1,6 @@
 package christmas;
 
-import christmas.controller.ConsoleController;
+import christmas.controller.console.ConsoleController;
 
 public class Application {
     public static void main(String[] args) {
