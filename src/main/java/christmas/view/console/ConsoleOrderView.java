@@ -16,8 +16,16 @@ public class ConsoleOrderView extends ConsoleView implements OrderView {
     }
 
     @Override
-    public void displayOrdered() {
-        return;
+    public List<HashMap<String, Integer>> displayOrdered(List<HashMap<String, Integer>> order) {
+        display("<주문 내역>");
+
+        for (HashMap<String, Integer> orderedMenu : order) {
+            for (String menuName : orderedMenu.keySet()) {
+                System.out.println(menuName + " " + orderedMenu.get(menuName) + "개");
+            }
+        }
+
+        return order;
     }
 
     private List<HashMap<String, Integer>> getCleanInput(String input) {

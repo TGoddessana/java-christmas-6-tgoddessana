@@ -37,9 +37,10 @@ public class ConsoleController {
 
         // 손님에게 주문을 입력받습니다.
         List<HashMap<String, Integer>> order = getOrder();
-
-        // 손님에게 주문 내역을 보여줍니다.
         OrderBoard orderBoard = createOrderBoard(order);
+
+        // 손님이 주문한 메뉴를 출력합니다.
+        orderView.displayOrdered(order);
     }
 
     private void welcome() {
