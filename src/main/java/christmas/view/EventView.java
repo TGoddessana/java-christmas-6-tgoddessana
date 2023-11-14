@@ -9,5 +9,5 @@ public interface EventView {
 
     Integer displayPriceBeforeEvent(OrderBoard orderBoard, MenuBoard menuBoard);
 
-    public GiveawayEvent displayGiveawayEvent(GiveawayEvent giveawayEvent);
+    GiveawayEvent displayGiveawayEvent(GiveawayEvent giveawayEvent);
 }
