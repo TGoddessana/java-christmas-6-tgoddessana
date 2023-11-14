@@ -19,7 +19,7 @@ public class ConsoleOrderView extends ConsoleView implements OrderView {
     @Override
     public OrderBoard displayOrdered(OrderBoard orderBoard) {
         display("");
-        display("<주문 내역>");
+        display("<주문 메뉴>");
 
         for (int i = 0; i < orderBoard.getOrderItems().size(); i++) {
             display(orderBoard.getOrderItems().get(i).getItemName() + " " + orderBoard.getOrderItems().get(i)
