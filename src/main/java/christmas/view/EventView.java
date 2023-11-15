@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.domain.event.BadgeEvent;
 import christmas.domain.event.BeneficialEvent;
 import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
@@ -15,4 +16,6 @@ public interface EventView {
     GiveawayEvent displayGiveawayEvent(GiveawayEvent giveawayEvent);
 
     BeneficialEvent displayBeneficialEvent(BeneficialEvent beneficialEvent);
+
+    BadgeEvent displayBadgeEvent(BadgeEvent badgeEvent);
 }

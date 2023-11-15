@@ -1,5 +1,6 @@
 package christmas.view.console;
 
+import christmas.domain.event.BadgeEvent;
 import christmas.domain.event.BeneficialEvent;
 import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
@@ -54,7 +55,16 @@ public class ConsoleEventView extends ConsoleView implements EventView {
         }
 
         display(beneficialEvent.getEventName() + ": -" + (String.format("%,d원", benefitPrice)));
-        
+
         return beneficialEvent;
+    }
+
+    @Override
+    public BadgeEvent displayBadgeEvent(BadgeEvent badgeEvent) {
+        display("");
+        display("<12월 이벤트 배지>");
+        display(String.valueOf(badgeEvent.getBadge()));
+
+        return badgeEvent;
     }
 }

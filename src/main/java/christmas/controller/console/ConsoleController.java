@@ -74,6 +74,7 @@ public class ConsoleController {
         eventView.displayBeneficialEvent(specialDayDiscountEvent);
         eventView.displayBeneficialEvent(giveawayEvent);
 
+        eventView.displayBadgeEvent(badgeEvent);
     }
 
     private <T> T getInput(Supplier<T> supplier) {

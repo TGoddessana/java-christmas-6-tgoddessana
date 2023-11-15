@@ -31,7 +31,7 @@ public class BadgeEvent {
         }
     }
 
-    private Badge getBadge() {
+    public Badge getBadge() {
         int totalPrice = menuBoard.calculateTotalPrice(orderBoard);
 
         if (totalPrice >= Badge.산타.getPrice()) {
