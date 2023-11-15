@@ -24,7 +24,7 @@ public class VisitDate {
 
     public int getUntilChristmas() {
         LocalDate christmas = LocalDate.of(CURRENT_YEAR, 12, 25);
-        return (int) date.until(christmas).getDays();
+        return date.until(christmas).getDays();
     }
 
     public boolean isWeekend() {
