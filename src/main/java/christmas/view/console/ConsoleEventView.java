@@ -60,6 +60,21 @@ public class ConsoleEventView extends ConsoleView implements EventView {
     }
 
     @Override
+    public Integer displayPriceAfterEvent(int priceAfterEvent) {
+        display("");
+        display("<총혜택 금액>");
+
+        if (priceAfterEvent == 0) {
+            display("없음");
+            return priceAfterEvent;
+        }
+
+        display(String.format("%,d원", priceAfterEvent));
+
+        return priceAfterEvent;
+    }
+
+    @Override
     public BadgeEvent displayBadgeEvent(BadgeEvent badgeEvent) {
         display("");
         display("<12월 이벤트 배지>");
@@ -67,4 +82,6 @@ public class ConsoleEventView extends ConsoleView implements EventView {
 
         return badgeEvent;
     }
+
+
 }

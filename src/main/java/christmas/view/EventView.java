@@ -18,4 +18,6 @@ public interface EventView {
     BeneficialEvent displayBeneficialEvent(BeneficialEvent beneficialEvent);
 
     BadgeEvent displayBadgeEvent(BadgeEvent badgeEvent);
+
+    Integer displayPriceAfterEvent(int priceAfterEvent);
 }

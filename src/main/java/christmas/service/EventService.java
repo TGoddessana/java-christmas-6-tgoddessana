@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.event.BeneficialEvent;
 import christmas.domain.event.DDayDiscountEvent;
 import christmas.domain.event.GiveawayEvent;
 import christmas.domain.event.SpecialDayDiscountEvent;
@@ -32,5 +33,11 @@ public class EventService {
     public SpecialDayDiscountEvent initSpecialDayDiscount(VisitDate visitDate, MenuBoard menuBoard,
                                                           OrderBoard orderBoard) {
         return new SpecialDayDiscountEvent(visitDate, orderBoard, menuBoard);
+    }
+
+    public int getTotalBenefitPrice(List<BeneficialEvent> beneficialEvents) {
+        return beneficialEvents.stream()
+                .mapToInt(BeneficialEvent::calculateBenefitPrice)
+                .sum();
     }
 }
