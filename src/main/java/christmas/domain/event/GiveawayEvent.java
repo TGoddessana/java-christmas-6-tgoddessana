@@ -5,7 +5,7 @@ import christmas.domain.menu.MenuItem;
 import christmas.domain.order.OrderBoard;
 import java.util.List;
 
-public class GiveawayEvent {
+public class GiveawayEvent extends BeneficialEvent {
     private final static int EVENT_PRICE = 120000;
     private final List<MenuItem> eventItems;
     private final MenuBoard menuBoard;
@@ -32,5 +32,10 @@ public class GiveawayEvent {
 
     private boolean isOverEventPrice() {
         return menuBoard.calculateTotalPrice(orderBoard) >= EVENT_PRICE;
+    }
+
+    @Override
+    public int calculateBenefitPrice() {
+        return menuBoard.findMenuItem(getEventItemName()).getPrice();
     }
 }

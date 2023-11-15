@@ -21,6 +21,11 @@ public class DDayDiscountEvent extends DiscountEvent {
     }
 
     @Override
+    public int calculateBenefitPrice() {
+        return calculateDiscountPrice();
+    }
+
+    @Override
     public String toString() {
         return "크리스마스 디데이 할인: -" + calculateDiscountPrice() + "원";
     }
