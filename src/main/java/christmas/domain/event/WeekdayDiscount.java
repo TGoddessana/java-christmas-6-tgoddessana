@@ -6,6 +6,8 @@ import christmas.domain.order.OrderItem;
 import christmas.domain.order.VisitDate;
 
 public class WeekdayDiscount extends DiscountEvent {
+    public static final String EVENT_NAME = "평일 할인";
+
     public WeekdayDiscount(VisitDate visitDate, OrderBoard orderBoard, MenuBoard menuBoard) {
         super(visitDate, orderBoard, menuBoard);
     }
@@ -25,5 +27,10 @@ public class WeekdayDiscount extends DiscountEvent {
         }
 
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "평일 할인: -" + calculateDiscountPrice() + "원";
     }
 }
