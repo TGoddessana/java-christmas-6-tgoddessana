@@ -12,7 +12,7 @@ public class WeekdayDiscount extends DiscountEvent {
 
     @Override
     public int calculateDiscountPrice() {
-        if (visitDate.isWeekend()) {
+        if (!visitDate.isWeekend()) {
             int orderQuantity = 0;
 
             for (OrderItem orderItem : orderBoard.getOrderItems()) {
