@@ -6,6 +6,7 @@ import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
 import christmas.view.EventView;
+import java.util.List;
 
 public class ConsoleEventView extends ConsoleView implements EventView {
     private static final String EVENT_PREVIEW_MESSAGE = "12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
@@ -28,16 +29,6 @@ public class ConsoleEventView extends ConsoleView implements EventView {
     }
 
     @Override
-    public String displayEventHeaderMessage() {
-        String header = "<혜택 내역>";
-
-        display("");
-        display(header);
-
-        return header;
-    }
-
-    @Override
     public GiveawayEvent displayGiveawayEvent(GiveawayEvent giveawayEvent) {
         display("");
         display("<증정 메뉴>");
@@ -47,16 +38,32 @@ public class ConsoleEventView extends ConsoleView implements EventView {
     }
 
     @Override
-    public BeneficialEvent displayBeneficialEvent(BeneficialEvent beneficialEvent) {
-        int benefitPrice = beneficialEvent.calculateBenefitPrice();
+    public BeneficialEvent displayBeneficialEvent(List<BeneficialEvent> beneficialEvents) {
+        display("");
+        display("<혜택 내역>");
 
-        if (benefitPrice == 0) {
-            return beneficialEvent;
+        int totalBenefit = 0;
+
+        for (BeneficialEvent beneficialEvent : beneficialEvents) {
+            totalBenefit += beneficialEvent.calculateBenefitPrice();
         }
 
-        display(beneficialEvent.getEventName() + ": -" + (String.format("%,d원", benefitPrice)));
+        if (totalBenefit == 0) {
+            display("없음");
+            return null;
+        }
 
-        return beneficialEvent;
+        for (BeneficialEvent beneficialEvent : beneficialEvents) {
+            int benefitPrice = beneficialEvent.calculateBenefitPrice();
+
+            if (benefitPrice == 0) {
+                continue;
+            }
+
+            display(beneficialEvent.getEventName() + ": -" + (String.format("%,d원", benefitPrice)));
+        }
+
+        return beneficialEvents.get(0);
     }
 
     @Override

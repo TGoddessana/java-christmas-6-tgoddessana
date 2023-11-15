@@ -63,24 +63,23 @@ public class ConsoleController {
         DiscountEvent weekendDiscountEvent = eventService.initWeekendDiscount(visitDate, menuBoard, orderBoard);
         DiscountEvent specialDayDiscountEvent = eventService.initSpecialDayDiscount(visitDate, menuBoard, orderBoard);
         BadgeEvent badgeEvent = new BadgeEvent(visitDate, orderBoard, menuBoard);
-
-        eventView.displayEventHeaderMessage();
-        eventView.displayBeneficialEvent(dDayDiscountEvent);
-        eventView.displayBeneficialEvent(weekdayDiscountEvent);
-        eventView.displayBeneficialEvent(weekendDiscountEvent);
-        eventView.displayBeneficialEvent(specialDayDiscountEvent);
-        eventView.displayBeneficialEvent(giveawayEvent);
+        
+        // 이벤트별 혜택을 출력합니다.
+        eventView.displayBeneficialEvent(
+                List.of(giveawayEvent, dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent,
+                        specialDayDiscountEvent));
 
         // 총 혜택가를 계산합니다.
         int totalBenefitPrice = eventService.getTotalBenefitPrice(
                 List.of(dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent, specialDayDiscountEvent,
                         giveawayEvent));
 
-        int totalDiscountPrice = eventService.getTotalDiscountPrice(
-                List.of(dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent, specialDayDiscountEvent));
-
         // 총 혜택가를 출력합니다.
         eventView.displayTotalBenefit(totalBenefitPrice);
+
+        // 총 할인가를 계산합니다.
+        int totalDiscountPrice = eventService.getTotalDiscountPrice(
+                List.of(dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent, specialDayDiscountEvent));
 
         // 할인 후 가격을 출력합니다.
         eventView.displayPriceAfterEvent(totalDiscountPrice, menuBoard.calculateTotalPrice(orderBoard));
