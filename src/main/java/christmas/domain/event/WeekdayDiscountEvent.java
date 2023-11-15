@@ -30,6 +30,11 @@ public class WeekdayDiscountEvent extends DiscountEvent {
     }
 
     @Override
+    public int calculateBenefitPrice() {
+        return calculateDiscountPrice();
+    }
+
+    @Override
     public String toString() {
         return EVENT_NAME + " -" + calculateDiscountPrice() + "원";
     }

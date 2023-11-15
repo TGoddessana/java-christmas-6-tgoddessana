@@ -33,5 +33,4 @@ public class GiveawayEvent {
     private boolean isOverEventPrice() {
         return menuBoard.calculateTotalPrice(orderBoard) >= EVENT_PRICE;
     }
-
 }
