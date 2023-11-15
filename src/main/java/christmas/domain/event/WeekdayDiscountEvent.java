@@ -5,10 +5,10 @@ import christmas.domain.order.OrderBoard;
 import christmas.domain.order.OrderItem;
 import christmas.domain.order.VisitDate;
 
-public class WeekdayDiscount extends DiscountEvent {
+public class WeekdayDiscountEvent extends DiscountEvent {
     public static final String EVENT_NAME = "평일 할인";
 
-    public WeekdayDiscount(VisitDate visitDate, OrderBoard orderBoard, MenuBoard menuBoard) {
+    public WeekdayDiscountEvent(VisitDate visitDate, OrderBoard orderBoard, MenuBoard menuBoard) {
         super(visitDate, orderBoard, menuBoard);
     }
 
