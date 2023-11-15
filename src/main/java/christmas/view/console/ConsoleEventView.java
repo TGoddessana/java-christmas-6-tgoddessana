@@ -60,7 +60,7 @@ public class ConsoleEventView extends ConsoleView implements EventView {
     }
 
     @Override
-    public Integer displayPriceAfterEvent(int priceAfterEvent) {
+    public Integer displayTotalBenefit(int priceAfterEvent) {
         display("");
         display("<총혜택 금액>");
 

@@ -76,7 +76,7 @@ public class ConsoleController {
                 List.of(dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent, specialDayDiscountEvent,
                         giveawayEvent));
 
-        eventView.displayPriceAfterEvent(priceAfterEvent);
+        eventView.displayTotalBenefit(priceAfterEvent);
 
         eventView.displayBadgeEvent(badgeEvent);
     }
