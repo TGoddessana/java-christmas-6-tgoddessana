@@ -1,6 +1,6 @@
 package christmas.view.console;
 
-import christmas.domain.event.DDayDiscountEvent;
+import christmas.domain.event.BeneficialEvent;
 import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
@@ -46,8 +46,15 @@ public class ConsoleEventView extends ConsoleView implements EventView {
     }
 
     @Override
-    public DDayDiscountEvent displayDDayDiscountEvent(DDayDiscountEvent dDayDiscountEvent) {
-        display(DDayDiscountEvent.EVENT_NAME + ": -" + dDayDiscountEvent.calculateDiscountPrice() + "원");
-        return dDayDiscountEvent;
+    public BeneficialEvent displayBeneficialEvent(BeneficialEvent beneficialEvent) {
+        int benefitPrice = beneficialEvent.calculateBenefitPrice();
+
+        if (benefitPrice == 0) {
+            return beneficialEvent;
+        }
+
+        display(beneficialEvent.getEventName() + ": -" + (String.format("%,d원", benefitPrice)));
+        
+        return beneficialEvent;
     }
 }

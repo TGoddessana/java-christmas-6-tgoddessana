@@ -13,6 +13,11 @@ public class SpecialDayDiscountEvent extends DiscountEvent {
     }
 
     @Override
+    public String getEventName() {
+        return EVENT_NAME;
+    }
+
+    @Override
     public int calculateDiscountPrice() {
         if (visitDate.isSpecialDay()) {
             return 1000;
@@ -28,6 +33,6 @@ public class SpecialDayDiscountEvent extends DiscountEvent {
 
     @Override
     public String toString() {
-        return EVENT_NAME + " -" + calculateDiscountPrice() + "원 할인";
+        return EVENT_NAME + " -" + calculateDiscountPrice() + "원";
     }
 }

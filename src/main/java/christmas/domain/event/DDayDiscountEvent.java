@@ -12,6 +12,11 @@ public class DDayDiscountEvent extends DiscountEvent {
     }
 
     @Override
+    public String getEventName() {
+        return EVENT_NAME;
+    }
+
+    @Override
     public int calculateDiscountPrice() {
         if (visitDate.getUntilChristmas() < 0) {
             return 0;

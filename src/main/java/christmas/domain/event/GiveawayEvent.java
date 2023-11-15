@@ -6,6 +6,7 @@ import christmas.domain.order.OrderBoard;
 import java.util.List;
 
 public class GiveawayEvent extends BeneficialEvent {
+    private static final String EVENT_NAME = "증정 이벤트";
     private final static int EVENT_PRICE = 120000;
     private final List<MenuItem> eventItems;
     private final MenuBoard menuBoard;
@@ -15,6 +16,11 @@ public class GiveawayEvent extends BeneficialEvent {
         this.eventItems = eventItems;
         this.menuBoard = menuBoard;
         this.orderBoard = orderBoard;
+    }
+
+    @Override
+    public String getEventName() {
+        return EVENT_NAME;
     }
 
     public String getEventItemName() {
@@ -36,6 +42,19 @@ public class GiveawayEvent extends BeneficialEvent {
 
     @Override
     public int calculateBenefitPrice() {
-        return menuBoard.findMenuItem(getEventItemName()).getPrice();
+        int benefitPrice = 0;
+
+        for (MenuItem eventItem : eventItems) {
+            if (isOverEventPrice()) {
+                benefitPrice += eventItem.getPrice();
+            }
+        }
+
+        return benefitPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "증정 이벤트: " + getEventItemName() + "(" + getEventItemName() + ")";
     }
 }

@@ -68,12 +68,12 @@ public class ConsoleController {
         BadgeEvent badgeEvent = new BadgeEvent(visitDate, orderBoard, menuBoard);
 
         eventView.displayEventHeaderMessage();
-        eventView.displayDDayDiscountEvent(dDayDiscountEvent);
+        eventView.displayBeneficialEvent(dDayDiscountEvent);
+        eventView.displayBeneficialEvent(weekdayDiscountEvent);
+        eventView.displayBeneficialEvent(weekendDiscountEvent);
+        eventView.displayBeneficialEvent(specialDayDiscountEvent);
+        eventView.displayBeneficialEvent(giveawayEvent);
 
-        System.out.println(weekdayDiscountEvent);
-        System.out.println(weekendDiscountEvent);
-        System.out.println(specialDayDiscountEvent);
-        System.out.println(badgeEvent);
     }
 
     private <T> T getInput(Supplier<T> supplier) {

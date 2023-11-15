@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.domain.event.DDayDiscountEvent;
+import christmas.domain.event.BeneficialEvent;
 import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
@@ -14,5 +14,5 @@ public interface EventView {
 
     GiveawayEvent displayGiveawayEvent(GiveawayEvent giveawayEvent);
 
-    DDayDiscountEvent displayDDayDiscountEvent(DDayDiscountEvent dDayDiscountEvent);
+    BeneficialEvent displayBeneficialEvent(BeneficialEvent beneficialEvent);
 }

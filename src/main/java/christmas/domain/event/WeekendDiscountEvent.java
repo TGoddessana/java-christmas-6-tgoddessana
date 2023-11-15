@@ -13,6 +13,11 @@ public class WeekendDiscountEvent extends DiscountEvent {
     }
 
     @Override
+    public String getEventName() {
+        return EVENT_NAME;
+    }
+
+    @Override
     public int calculateDiscountPrice() {
         if (visitDate.isWeekend()) {
             int orderQuantity = 0;
