@@ -69,9 +69,18 @@ public class ConsoleEventView extends ConsoleView implements EventView {
             return priceAfterEvent;
         }
 
-        display(String.format("%,d원", priceAfterEvent));
+        display("-" + String.format("%,d원", priceAfterEvent));
 
         return priceAfterEvent;
+    }
+
+    @Override
+    public Integer displayPriceAfterEvent(int priceAfterEvent, int priceBeforeEvent) {
+        display("");
+        display("<할인 후 예상 결제 금액>");
+        display(String.format("%,d원", priceBeforeEvent - priceAfterEvent));
+
+        return priceBeforeEvent - priceAfterEvent;
     }
 
     @Override

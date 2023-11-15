@@ -72,12 +72,14 @@ public class ConsoleController {
         eventView.displayBeneficialEvent(giveawayEvent);
 
         // 할인 후 가격을 출력합니다.
-        int priceAfterEvent = eventService.getTotalBenefitPrice(
+        int totalBenefitPrice = eventService.getTotalBenefitPrice(
                 List.of(dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent, specialDayDiscountEvent,
                         giveawayEvent));
 
-        eventView.displayTotalBenefit(priceAfterEvent);
+        eventView.displayTotalBenefit(totalBenefitPrice);
+        eventView.displayPriceAfterEvent(totalBenefitPrice, menuBoard.calculateTotalPrice(orderBoard));
 
+        // 뱃지 이벤트를 출력합니다.
         eventView.displayBadgeEvent(badgeEvent);
     }
 
