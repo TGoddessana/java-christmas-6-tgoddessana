@@ -1,7 +1,7 @@
 package christmas.controller.console;
 
 import christmas.domain.event.BadgeEvent;
-import christmas.domain.event.BeneficialEvent;
+import christmas.domain.event.DiscountEvent;
 import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
@@ -58,10 +58,10 @@ public class ConsoleController {
         eventView.displayGiveawayEvent(giveawayEvent);
 
         // 크리스마스 디데이 할인, 평일 할인, 주말 할인, 특별 할인 객체를 만듭니다.
-        BeneficialEvent dDayDiscountEvent = eventService.initDDayDiscountEvent(visitDate, menuBoard, orderBoard);
-        BeneficialEvent weekdayDiscountEvent = eventService.initWeekdayDiscount(visitDate, menuBoard, orderBoard);
-        BeneficialEvent weekendDiscountEvent = eventService.initWeekendDiscount(visitDate, menuBoard, orderBoard);
-        BeneficialEvent specialDayDiscountEvent = eventService.initSpecialDayDiscount(visitDate, menuBoard, orderBoard);
+        DiscountEvent dDayDiscountEvent = eventService.initDDayDiscountEvent(visitDate, menuBoard, orderBoard);
+        DiscountEvent weekdayDiscountEvent = eventService.initWeekdayDiscount(visitDate, menuBoard, orderBoard);
+        DiscountEvent weekendDiscountEvent = eventService.initWeekendDiscount(visitDate, menuBoard, orderBoard);
+        DiscountEvent specialDayDiscountEvent = eventService.initSpecialDayDiscount(visitDate, menuBoard, orderBoard);
         BadgeEvent badgeEvent = new BadgeEvent(visitDate, orderBoard, menuBoard);
 
         eventView.displayEventHeaderMessage();
@@ -71,13 +71,19 @@ public class ConsoleController {
         eventView.displayBeneficialEvent(specialDayDiscountEvent);
         eventView.displayBeneficialEvent(giveawayEvent);
 
-        // 할인 후 가격을 출력합니다.
+        // 총 혜택가를 계산합니다.
         int totalBenefitPrice = eventService.getTotalBenefitPrice(
                 List.of(dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent, specialDayDiscountEvent,
                         giveawayEvent));
 
+        int totalDiscountPrice = eventService.getTotalDiscountPrice(
+                List.of(dDayDiscountEvent, weekdayDiscountEvent, weekendDiscountEvent, specialDayDiscountEvent));
+
+        // 총 혜택가를 출력합니다.
         eventView.displayTotalBenefit(totalBenefitPrice);
-        eventView.displayPriceAfterEvent(totalBenefitPrice, menuBoard.calculateTotalPrice(orderBoard));
+
+        // 할인 후 가격을 출력합니다.
+        eventView.displayPriceAfterEvent(totalDiscountPrice, menuBoard.calculateTotalPrice(orderBoard));
 
         // 뱃지 이벤트를 출력합니다.
         eventView.displayBadgeEvent(badgeEvent);
