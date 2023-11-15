@@ -4,11 +4,12 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class VisitDate {
+    private static final int CURRENT_YEAR = 2023;
     private final LocalDate date;
 
     public VisitDate(int dayOfMonth) {
         validate(dayOfMonth);
-        this.date = LocalDate.of(2023, 12, dayOfMonth);
+        this.date = LocalDate.of(CURRENT_YEAR, 12, dayOfMonth);
     }
 
     private void validate(int dayOfMonth) {
@@ -19,6 +20,11 @@ public class VisitDate {
 
     public DayOfWeek getDayOfWeek() {
         return date.getDayOfWeek();
+    }
+
+    public int getUntilChristmas() {
+        LocalDate christmas = LocalDate.of(CURRENT_YEAR, 12, 25);
+        return (int) date.until(christmas).getDays();
     }
 
     public boolean isWeekend() {
