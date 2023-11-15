@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
 import christmas.domain.order.OrderItem;
 import christmas.domain.order.VisitDate;
@@ -28,4 +29,17 @@ public class OrderService {
 
         return new OrderItem(itemName, quantity);
     }
+
+    public void validateOrderBoard(OrderBoard orderBoard, MenuBoard menuBoard) {
+        // 메뉴에 없는 음식은 주문할 수 없습니다.
+        for (OrderItem orderItem : orderBoard.getOrderItems()) {
+            try {
+                menuBoard.findMenuItem(orderItem.getItemName());
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("메뉴에 없는 음식은 주문할 수 없습니다.");
+            }
+        }
+
+    }
+
 }
