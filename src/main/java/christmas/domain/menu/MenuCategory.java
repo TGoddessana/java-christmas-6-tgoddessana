@@ -16,6 +16,10 @@ public class MenuCategory {
         items.add(item);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public List<MenuItem> getMenuItems() {
         return items;
     }
