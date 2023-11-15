@@ -1,6 +1,11 @@
 package christmas.controller.console;
 
+import christmas.domain.event.BadgeEvent;
+import christmas.domain.event.DDayDiscountEvent;
 import christmas.domain.event.GiveawayEvent;
+import christmas.domain.event.SpecialDayDiscountEvent;
+import christmas.domain.event.WeekdayDiscountEvent;
+import christmas.domain.event.WeekendDiscountEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
 import christmas.domain.order.VisitDate;
@@ -54,6 +59,21 @@ public class ConsoleController {
         GiveawayEvent giveawayEvent = eventService.initGiveawayEvent(menuBoard, orderBoard);
         eventView.displayGiveawayEvent(giveawayEvent);
 
+        // 크리스마스 디데이 할인, 평일 할인, 주말 할인, 특별 할인 객체를 만듭니다.
+        DDayDiscountEvent dDayDiscountEvent = eventService.initDDayDiscountEvent(visitDate, menuBoard, orderBoard);
+        WeekdayDiscountEvent weekdayDiscountEvent = eventService.initWeekdayDiscount(visitDate, menuBoard, orderBoard);
+        WeekendDiscountEvent weekendDiscountEvent = eventService.initWeekendDiscount(visitDate, menuBoard, orderBoard);
+        SpecialDayDiscountEvent specialDayDiscountEvent = eventService.initSpecialDayDiscount(visitDate, menuBoard,
+                orderBoard);
+        BadgeEvent badgeEvent = new BadgeEvent(visitDate, orderBoard, menuBoard);
+
+        eventView.displayEventHeaderMessage();
+        eventView.displayDDayDiscountEvent(dDayDiscountEvent);
+
+        System.out.println(weekdayDiscountEvent);
+        System.out.println(weekendDiscountEvent);
+        System.out.println(specialDayDiscountEvent);
+        System.out.println(badgeEvent);
     }
 
     private <T> T getInput(Supplier<T> supplier) {

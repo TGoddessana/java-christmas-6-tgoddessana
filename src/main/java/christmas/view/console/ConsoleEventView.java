@@ -1,5 +1,6 @@
 package christmas.view.console;
 
+import christmas.domain.event.DDayDiscountEvent;
 import christmas.domain.event.GiveawayEvent;
 import christmas.domain.menu.MenuBoard;
 import christmas.domain.order.OrderBoard;
@@ -26,11 +27,27 @@ public class ConsoleEventView extends ConsoleView implements EventView {
     }
 
     @Override
+    public String displayEventHeaderMessage() {
+        String header = "<혜택 내역>";
+
+        display("");
+        display(header);
+
+        return header;
+    }
+
+    @Override
     public GiveawayEvent displayGiveawayEvent(GiveawayEvent giveawayEvent) {
         display("");
         display("<증정 메뉴>");
         display(giveawayEvent.getEventItemName());
 
         return giveawayEvent;
+    }
+
+    @Override
+    public DDayDiscountEvent displayDDayDiscountEvent(DDayDiscountEvent dDayDiscountEvent) {
+        display(DDayDiscountEvent.EVENT_NAME + ": -" + dDayDiscountEvent.calculateDiscountPrice() + "원");
+        return dDayDiscountEvent;
     }
 }
