@@ -2,6 +2,7 @@ package christmas.domain.order;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.List;
 
 public class VisitDate {
     private static final int CURRENT_YEAR = 2023;
@@ -30,5 +31,10 @@ public class VisitDate {
     public boolean isWeekend() {
         DayOfWeek dayOfWeek = getDayOfWeek();
         return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
+    }
+
+    public boolean isSpecialDay() {
+        List<Integer> specialDays = List.of(3, 10, 17, 24, 25);
+        return specialDays.contains(date.getDayOfMonth());
     }
 }
